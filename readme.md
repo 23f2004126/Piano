@@ -11,4 +11,4 @@ A web-based piano that allows you to play notes by clicking on keys. Key labels 
 ## Features
 - Play piano notes with mouse click  
 - Toggle key labels on/off  
-- Responsive design for different screen sizes
+- Responsive design for different 
