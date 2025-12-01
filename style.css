@@ -1,0 +1,217 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Background */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: radial-gradient(circle at 30% 50%, #2a0f24, #0a0712 70%);
+  color: #d8c6d8;
+}
+
+/* Wrapper */
+.wrapper {
+  padding: 35px 40px;
+  border-radius: 20px;
+  background: rgba(10, 5, 15, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  box-shadow:
+    0 0 35px rgba(255, 220, 80, 0.35),
+    0 0 80px rgba(255, 220, 80, 0.15);
+}
+
+.wrapper header {
+  display: flex;
+  color: #c6b2c6;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h2 {
+  font-size: 1.6rem;
+}
+
+header .column {
+  display: flex;
+  align-items: center;
+}
+
+header span {
+  font-weight: 500;
+  margin-right: 15px;
+  font-size: 1.19rem;
+  color: #e8d0e8;
+}
+
+header input {
+  outline: none;
+  border-radius: 30px;
+}
+
+.volume-slider input {
+  accent-color: #ffb3d9;
+}
+
+/* Toggle */
+.keys-checkbox input {
+  height: 30px;
+  width: 60px;
+  cursor: pointer;
+  appearance: none;
+  position: relative;
+  background: #3b2c3b;
+  border-radius: 30px;
+}
+
+.keys-checkbox input::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #a97da9;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+.keys-checkbox input:checked::before {
+  left: 35px;
+  background: #ffe4f2;
+}
+
+/* Piano keys */
+.piano-keys {
+  display: flex;
+  list-style: none;
+  margin-top: 40px;
+  position: relative;
+}
+
+/* White keys */
+.piano-keys .white {
+  height: 230px;
+  width: 70px;
+  border-radius: 8px;
+  border: 1px solid #000;
+  background: linear-gradient(#faf7ff 96%, #e5ddee 4%);
+  position: relative;
+}
+
+.piano-keys .white.active {
+  box-shadow: inset -5px 5px 20px rgba(0,0,0,0.3);
+  background: linear-gradient(to bottom, #fff0ff 0%, #e7dbe9 100%);
+}
+
+/* Black keys */
+.piano-keys .black {
+  z-index: 2;
+  width: 44px;
+  height: 140px;
+  margin: 0 -22px;
+  border-radius: 0 0 5px 5px;
+  background: linear-gradient(#1b1b1b, #000);
+  position: relative;
+  box-shadow: 0 0 8px rgba(255, 120, 180, 0.12);
+}
+
+.piano-keys .black.active {
+  background: linear-gradient(to bottom, #000, #333);
+  box-shadow:
+    inset -5px -10px 10px rgba(255,255,255,0.15),
+    0 0 12px rgba(255, 140, 200, 0.3);
+}
+
+/* ⭐ SINGLE LABEL (only on key) */
+.piano-keys .key .label-main {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  font-size: 0.95rem;
+  text-align: center;
+  pointer-events: none;
+  display: none;
+}
+
+/* White key = Black text */
+.piano-keys .white .label-main {
+  color: #000;
+}
+
+/* Black key = White text */
+.piano-keys .black .label-main {
+  color: #fff;
+}
+
+/* ⭐ Show labels when toggle ON */
+.piano-keys .key.show .label-main {
+  display: block;
+}
+
+/* Remove bottom labels */
+.label-bottom {
+  display: none !important;
+}
+
+/* Hover */
+.piano-keys .key:hover {
+  filter: brightness(1.2);
+  transition: 0.2s ease;
+}
+
+/* Responsive */
+@media screen and (max-width: 815px) {
+  .wrapper {
+    padding: 25px;
+  }
+  header {
+    flex-direction: column;
+  }
+  header :where(h2, .column) {
+    margin-bottom: 13px;
+  }
+  .volume-slider input {
+    max-width: 100px;
+  }
+  .piano-keys {
+    margin-top: 20px;
+  }
+  .piano-keys .key:where(:nth-child(9), :nth-child(10)) {
+    display: none;
+  }
+  .piano-keys .black {
+    height: 100px;
+    width: 40px;
+    margin: 0 -20px;
+  }
+  .piano-keys .white {
+    height: 180px;
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  .piano-keys .key:nth-child(13),
+  .piano-keys .key:nth-child(14),
+  .piano-keys .key:nth-child(15),
+  .piano-keys .key:nth-child(16),
+  .piano-keys .key:nth-child(17) {
+    display: none;
+  }
+  .piano-keys .white {
+    width: 50px;
+  }
+}
